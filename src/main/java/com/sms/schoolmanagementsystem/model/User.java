@@ -1,16 +1,11 @@
 package com.sms.schoolmanagementsystem.model;
 
-import javax.persistence.*;
 import java.util.Date;
 
 import jakarta.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 
 /**
  * Student
@@ -18,7 +13,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "user")
-uniqueConstraint = @UniqueConstraint(name = "uniqueEmail", columnNames = "email")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,10 +24,15 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String last_name;
 
-    @Column(name = "email_address", nullable = false)
+    @Column(name = "email_address", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

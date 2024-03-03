@@ -1,7 +1,6 @@
 package com.sms.schoolmanagementsystem.model;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,8 +10,8 @@ import com.sms.schoolmanagementsystem.enums.Gender;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "teacher")
-public class Teacher {
+@Table(name = "non_teaching_staff")
+public class NonTeachingStaff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,20 +25,8 @@ public class Teacher {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Column(name = "licence_number")
-    private String licenceNumber;
-
-    @Column(name = "licence_expiry_date")
-    @Temporal(TemporalType.DATE)
-    private Date licenceExpiryDate;
-
-    @Column(name = "licence_issue_date")
-    @Temporal(TemporalType.DATE)
-    private Date licenceIssueDate;
-
-    @Column(name = "licence_certificate")
-    @Lob
-    private byte[] licenceCertificate;
+    @Column(name = "student_id_number", unique = true, nullable = false)
+    private String studentIdNumber;
 
     @Column(name = "street_address", length = 150)
     private String streetAddress;
@@ -60,7 +47,7 @@ public class Teacher {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "school_id")
     private School school;
 
@@ -71,5 +58,4 @@ public class Teacher {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
-
 }

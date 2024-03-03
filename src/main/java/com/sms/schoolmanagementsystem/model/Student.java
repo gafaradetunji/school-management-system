@@ -1,7 +1,6 @@
 package com.sms.schoolmanagementsystem.model;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,8 +10,8 @@ import com.sms.schoolmanagementsystem.enums.Gender;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "teacher")
-public class Teacher {
+@Table(name = "student")
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,20 +25,8 @@ public class Teacher {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Column(name = "licence_number")
-    private String licenceNumber;
-
-    @Column(name = "licence_expiry_date")
-    @Temporal(TemporalType.DATE)
-    private Date licenceExpiryDate;
-
-    @Column(name = "licence_issue_date")
-    @Temporal(TemporalType.DATE)
-    private Date licenceIssueDate;
-
-    @Column(name = "licence_certificate")
-    @Lob
-    private byte[] licenceCertificate;
+    @Column(name = "student_id_number", unique = true, nullable = false)
+    private String studentIdNumber;
 
     @Column(name = "street_address", length = 150)
     private String streetAddress;
@@ -63,6 +50,18 @@ public class Teacher {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "school_id")
     private School school;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp

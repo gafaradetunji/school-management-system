@@ -6,25 +6,27 @@ import java.util.Date;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.sms.schoolmanagementsystem.enums.Gender;
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "teacher")
-public class Teacher {
+@Table(name = "school")
+public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "school_name", length = 150)
+    private String name;
+
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    @Lob
+    @Column(name = "logo")
+    private byte[] logo;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Column(name = "email_address", unique = true, nullable = false)
+    private String email;
 
     @Column(name = "licence_number")
     private String licenceNumber;
@@ -41,7 +43,7 @@ public class Teacher {
     @Lob
     private byte[] licenceCertificate;
 
-    @Column(name = "street_address", length = 150)
+    @Column(length = 150)
     private String streetAddress;
 
     @Column(length = 150)
@@ -55,14 +57,6 @@ public class Teacher {
 
     @Column(length = 150)
     private String country;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "school_id")
-    private School school;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
