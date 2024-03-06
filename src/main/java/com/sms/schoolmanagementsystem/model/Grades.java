@@ -11,9 +11,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "grades_assignment")
 public class Grades {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private @Id @GeneratedValue Long id;
 
     @Column(name = "grade_calculation", precision = 10, scale = 2)
     private BigDecimal gradeCalculation;

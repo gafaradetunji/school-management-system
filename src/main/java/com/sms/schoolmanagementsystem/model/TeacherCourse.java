@@ -10,9 +10,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "teacher_course")
 public class TeacherCourse {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private @Id @GeneratedValue Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
@@ -31,4 +30,36 @@ public class TeacherCourse {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
+
+    TeacherCourse() {
+    }
+
+    public TeacherCourse(Teacher teacher, Course course) {
+        this.teacher = teacher;
+        this.course = course;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Course getCourse() {
+        return this.course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Teacher getTeacher() {
+        return this.teacher;
+    }
 }

@@ -10,9 +10,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "real_time_messaging")
 public class Messaging {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private @Id @GeneratedValue Long id;
 
     @ManyToOne
     @JoinColumn(name = "sender_id", nullable = false)

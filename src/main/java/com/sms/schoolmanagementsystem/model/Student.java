@@ -12,9 +12,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "student")
 public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private @Id @GeneratedValue Long id;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -71,4 +70,108 @@ public class Student {
     @UpdateTimestamp
     private Timestamp updatedAt;
 
+    Student() {
+    }
+
+    Student(String phoneNumber, String dateOfBirth, Gender gender, String studentIdNumber,
+            String streetAddress, String city, String state, String postalCode,
+            String country, User user, School school, Teacher teacher,
+            Department department, Course course) {
+        this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.studentIdNumber = studentIdNumber;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+        this.country = country;
+        this.user = user;
+        this.school = school;
+        this.teacher = teacher;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Gender getGender() {
+        return this.gender;
+    }
+
+    public String getStudentIdNumber() {
+        return this.studentIdNumber;
+    }
+
+    public void setStudentIdNumber(String studentIdNumber) {
+        this.studentIdNumber = studentIdNumber;
+    }
+
+    public String getStreetAddress() {
+        return this.streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getCity() {
+        return this.city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return this.state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getPostalCode() {
+        return this.postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCountry() {
+        return this.country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public Teacher getTeacher() {
+        return this.teacher;
+    }
 }
