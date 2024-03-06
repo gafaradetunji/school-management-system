@@ -10,9 +10,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "department_teacher")
 public class DepartmentTeacher {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private @Id @GeneratedValue Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id")

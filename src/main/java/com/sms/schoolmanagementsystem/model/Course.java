@@ -10,9 +10,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "course")
 public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private @Id @GeneratedValue Long id;
 
     @Column(name = "course_name")
     private String name;
