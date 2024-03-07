@@ -31,4 +31,28 @@ public class DepartmentCourse {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
+    DepartmentCourse() {
+    }
+
+    DepartmentCourse(Department department, Course course) {
+        this.department = department;
+        this.course = course;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Department getDepartment() {
+        return this.department;
+    }
+
+    public Course getCourse() {
+        return this.course;
+    }
+
 }

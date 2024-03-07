@@ -32,4 +32,37 @@ public class Grades {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    Grades() {
+    }
+
+    Grades(BigDecimal gradeCalculation, Student student, Course course) {
+        this.gradeCalculation = gradeCalculation;
+        this.student = student;
+        this.course = course;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public BigDecimal getGradeCalculation() {
+        return this.gradeCalculation;
+    }
+
+    public void setGradeCalculation(BigDecimal gradeCalculation) {
+        this.gradeCalculation = gradeCalculation;
+    }
+
+    public Student getStudent() {
+        return this.student;
+    }
+
+    public Course getCourse() {
+        return this.course;
+    }
 }

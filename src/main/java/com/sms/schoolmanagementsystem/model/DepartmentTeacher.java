@@ -30,4 +30,28 @@ public class DepartmentTeacher {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
+
+    DepartmentTeacher() {
+    }
+
+    DepartmentTeacher(Department department, Teacher teacher) {
+        this.department = department;
+        this.teacher = teacher;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Department getDepartment() {
+        return this.department;
+    }
+
+    public Teacher getTeacher() {
+        return this.teacher;
+    }
 }

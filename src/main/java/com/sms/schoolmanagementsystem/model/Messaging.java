@@ -31,4 +31,37 @@ public class Messaging {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    Messaging() {
+    }
+
+    Messaging(User sender, User recipient, String messageText) {
+        this.sender = sender;
+        this.recipient = recipient;
+        this.messageText = messageText;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getSender() {
+        return this.sender;
+    }
+
+    public User getRecipient() {
+        return this.recipient;
+    }
+
+    public String getMessageText() {
+        return this.messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
 }

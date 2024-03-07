@@ -20,7 +20,7 @@ public class Event {
     private String description;
 
     @Column(name = "event_date")
-    private Timestamp eventDate;
+    private String eventDate;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
@@ -29,4 +29,45 @@ public class Event {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    Event() {
+    }
+
+    Event(String name, String description, String eventDate) {
+        this.name = name;
+        this.description = description;
+        this.eventDate = eventDate;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getEventDate() {
+        return this.eventDate;
+    }
+
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
+    }
 }
