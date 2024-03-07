@@ -42,4 +42,60 @@ public class Assignment {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    Assignment() {
+    }
+
+    Assignment(String name, String description, byte[] content, Teacher teacher, Department department, Course course) {
+        this.name = name;
+        this.description = description;
+        this.content = content;
+        this.teacher = teacher;
+        this.department = department;
+        this.course = course;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public byte[] getContent() {
+        return this.content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+
+    public Teacher getTeacher() {
+        return this.teacher;
+    }
+
+    public Department getDepartment() {
+        return this.department;
+    }
+
+    public Course getCourse() {
+        return this.course;
+    }
 }

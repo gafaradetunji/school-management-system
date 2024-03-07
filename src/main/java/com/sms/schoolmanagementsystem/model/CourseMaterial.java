@@ -30,4 +30,32 @@ public class CourseMaterial {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
+
+    CourseMaterial() {
+    }
+
+    CourseMaterial(byte[] courseResources, Course course) {
+        this.courseResources = courseResources;
+        this.course = course;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public byte[] getCourseResources() {
+        return this.courseResources;
+    }
+
+    public void setCourseResources(byte[] courseResources) {
+        this.courseResources = courseResources;
+    }
+
+    public Course getCourse() {
+        return this.course;
+    }
 }

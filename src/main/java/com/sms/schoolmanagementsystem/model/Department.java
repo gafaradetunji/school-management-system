@@ -26,4 +26,32 @@ public class Department {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    Department() {
+    }
+
+    Department(String departmentName, School school) {
+        this.departmentName = departmentName;
+        this.school = school;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDepartmentName() {
+        return this.departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public School getSchool() {
+        return this.school;
+    }
 }
